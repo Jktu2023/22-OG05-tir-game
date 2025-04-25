@@ -24,7 +24,10 @@ target_x = random.randint(0, HEIGHT - T_HEIGHT)
 
 running = True  # Зададим переменную running → пропишем, что она равна True
 while running:  # → создадим цикл while
-    pass
+    screen.fill(BLACK)
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
 
+            running = False
 pygame.quit()  # выходим так
 sys.exit() # и эдак
