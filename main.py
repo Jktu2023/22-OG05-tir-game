@@ -29,8 +29,10 @@ while running:  # → создадим цикл while
         if event.type == pygame.QUIT:
             running = False
     if event.type == pygame.MOUSEBUTTONDOWN:
-        mouse_x, mouse_y = pygame.mouse.get_pos()
-        if target_x < mouse_x < target_x + T_WIDTH and target_y < mouse_y < target_y + T_HEIGHT:
+        mouse_x, mouse_y = pygame.mouse.get_pos() # сохраняем координаты курсора мыши, куда мы кликнули
+        # находится ли координата мыши mouse_ в пределах координаты мишени target_ и размером этой мишени (target_ + T_РАЗМЕРМИШЕНИ)
+        if target_x < mouse_x < (target_x + T_WIDTH) and target_y < mouse_y < (target_y + T_HEIGHT):
+            # новые рандомные координаты мишени - мишень меняет положение в окне
             target_x = random.randint(0, WIDTH - T_WIDTH)
             target_y = random.randint(0, HEIGHT - T_HEIGHT)
 
