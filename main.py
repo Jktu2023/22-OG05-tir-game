@@ -20,14 +20,22 @@ T_WIDTH = 80
 T_HEIGHT = 80
 # рандомные координаты мишени
 target_x = random.randint(0, WIDTH - T_WIDTH)
-target_x = random.randint(0, HEIGHT - T_HEIGHT)
+target_y = random.randint(0, HEIGHT - T_HEIGHT)
 
 running = True  # Зададим переменную running → пропишем, что она равна True
 while running:  # → создадим цикл while
     screen.fill(BLACK)
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
-
             running = False
+    if event.type == pygame.MOUSEBUTTONDOWN:
+        mouse_x, mouse_y = pygame.mouse.get_pos()
+        if target_x < mouse_x < target_x + T_WIDTH and target_y < mouse_y < target_y + T_HEIGHT:
+            target_x = random.randint(0, WIDTH - T_WIDTH)
+            target_y = random.randint(0, HEIGHT - T_HEIGHT)
+
+    screen.blit(image_target, (target_x, target_y))
+    pygame.display.update()
+
 pygame.quit()  # выходим так
 sys.exit() # и эдак
